@@ -1,0 +1,14 @@
+      <ItemOut quantity="{{aantal}}" lineNumber="{{regelNr}}">
+        <ItemID>
+          <SupplierPartID>{{code}}</SupplierPartID>
+          <SupplierPartAuxiliaryID>{{opmerking}}</SupplierPartAuxiliaryID>
+        </ItemID>
+        <ItemDetail>
+          <UnitPrice>
+            <Money currency="EUR">{{prijs}}</Money>
+          </UnitPrice>
+          <Description xml:lang="nl">{{product}}</Description>
+          <UnitOfMeasure>EA</UnitOfMeasure>
+          <Classification domain="" />
+        </ItemDetail>
+      </ItemOut>

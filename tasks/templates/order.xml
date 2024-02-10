@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cXML SYSTEM "http://xml.cxml.org/schemas/cXML/1.2.043/cXML.dtd">
+<cXML xml:lang="en-US" payloadID="" timestamp="{{timestampVerwerking}}">
+  <Header>
+    <From>
+      <Credential domain="companyName">
+        <Identity>{{factuurAdres.naam}}</Identity>
+      </Credential>
+    </From>
+    <To>
+      <Credential domain="">
+        <Identity></Identity>
+      </Credential>
+    </To>
+    <Sender>
+      <Credential domain="">
+        <Identity></Identity>
+      </Credential>
+      <UserAgent>RGF PDF parser</UserAgent>
+    </Sender>
+  </Header>
+  <Request deploymentMode="production">
+    <OrderRequest>
+      <OrderRequestHeader orderID="{{orderNummer}}" type="new" orderDate="{{timestampVerwerking}}">
+        <Total>
+          <Money currency="EUR">{{nettoBedrag}}</Money>
+        </Total>
+        <BillTo>
+          <Address>
+            <Name xml:lang="en">{{factuurAdres.naam}}</Name>
+            <PostalAddress>
+              <DeliverTo>{{factuurAdres.naam}}</DeliverTo>
+              <Street>{{factuurAdres.adres}}</Street>
+              <City>{{factuurAdres.stad}}</City>
+              <PostalCode>{{factuurAdres.postcode}}</PostalCode>
+              <Country isoCountryCode="{{factuurAdres.landCode}}">{{factuurAdres.landNaam}}</Country>
+            </PostalAddress>
+          </Address>
+        </BillTo>
+        <Contact role="purchasingAgent">
+          <Name xml:lang="en">{{teContacterenOntvangerGoederen.naam}}</Name>
+          <Email>{{teContacterenOntvangerGoederen.email}}</Email>
+        </Contact>
+      </OrderRequestHeader>
+      <!-- requestedDeliveryDate is optional, date entered during the roundtrip is used if not specified here -->
+      [[itemOutList]]
+    </OrderRequest>
+  </Request>
+</cXML>
